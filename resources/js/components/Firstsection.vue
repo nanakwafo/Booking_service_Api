@@ -30,16 +30,10 @@ export default {
         
     },
     methods: {
-    //paginate the service in twos'
+    //COMMENT:load service in twos  and paginate paginate the service in twos'
         getResults:function(page){
-            
-              if(page === undefined){
-                  page=this.page;
-              }else{
-                    page= this.page + 1;
-                    alert(page);
-              }
-              fetch('api/services?page=' + page)
+             page =page=== undefined? this.page:this.page+1;
+             fetch('api/services?page=' + page)
               .then(response => response.json())
                 .then(response => {
                     this.services= this.services.concat(response.data);
@@ -48,7 +42,8 @@ export default {
                 this.page=page;
               
         },
-        //get all
+        //COMMENT:function to get all  services
+
         // getServices: function () {
         //     fetch('api/services')
         //         .then(res => res.json())

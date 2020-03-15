@@ -1937,17 +1937,11 @@ __webpack_require__.r(__webpack_exports__);
     this.getResults();
   },
   methods: {
-    //paginate the service in twos'
+    //COMMENT:load service in twos  and paginate paginate the service in twos'
     getResults: function getResults(page) {
       var _this = this;
 
-      if (page === undefined) {
-        page = this.page;
-      } else {
-        page = this.page + 1;
-        alert(page);
-      }
-
+      page = page === undefined ? this.page : this.page + 1;
       fetch('api/services?page=' + page).then(function (response) {
         return response.json();
       }).then(function (response) {
@@ -1955,7 +1949,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
       });
       this.page = page;
-    } //get all
+    } //COMMENT:function to get all  services
     // getServices: function () {
     //     fetch('api/services')
     //         .then(res => res.json())
