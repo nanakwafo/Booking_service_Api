@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.4",
+        "@babel/preset-env": "^7.7.4",
+        "axios": "^0.19",
+        "bootstrap": "^4.0.0",
+        "case-sensitive-paths-webpack-plugin": "^2.3.0",
+        "cross-env": "^7.0",
+        "deepmerge": "^4.2.2",
+        "fibers": "^4.0.2",
+        "jquery": "^3.2",
+        "laravel-mix": "^5.0.1",
+        "lodash": "^4.17.13",
+        "popper.js": "^1.12",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.26.2",
+        "sass-loader": "^8.0.2",
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@webwingscz/googlefont-roboto": "^1.0.1",
+        "laravel-vue-pagination": "^2.3.1",
+        "material-design-icons-iconfont": "^5.0.1",
+        "sweetalert2": "^9.8.2",
+        "vuelidate": "^0.7.5",
+        "vuetify": "^2.2.15",
+        "vuetify-loader": "^1.4.3"
+    }
+}
