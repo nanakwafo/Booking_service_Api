@@ -14,43 +14,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 //create a  user
-Route::post('register','Api/AuthController@register');
+Route::post ('register', 'AuthenticationController@register');
 //create a   login
-Route::post('login','Api/AuthController@login');
+Route::post ('login', 'AuthenticationController@login');
 
 //List Booking
-Route::get('bookings','bookingController@index');
+Route::get ('bookings', 'bookingController@index');
 
 // List Single Booking
-Route::get('booking/{id}','bookingController@show');
+Route::get ('booking/{id}', 'bookingController@show');
 
 //create a booking
-Route::post('booking','bookingController@store');
+Route::post ('booking', 'bookingController@store');
 
 //Update booking
-Route::put('booking','bookingController@store');
+Route::patch ('booking', 'bookingController@store');
 
 //Delete booking
-Route::get('booking/{id}','bookingController@destroy');
-
+Route::get ('booking/{id}', 'bookingController@destroy');
 
 
 //List Services
-Route::get('services','ServiceController@index');
+Route::get ('services', 'ServiceController@index');
 
 // List Single Booking
-Route::get('service/{id}','ServiceController@show');
+Route::get ('service/{id}', 'ServiceController@show');
 
 //create a booking
-Route::post('service','ServiceController@store');
+Route::post ('service', 'ServiceController@store');
 
 //Update booking
-Route::put('service','ServiceController@store');
+Route::patch ('service', 'ServiceController@store');
 
 //Delete booking
-Route::get('service/{id}','ServiceController@destroy');
+Route::get ('service/{id}', 'ServiceController@destroy');

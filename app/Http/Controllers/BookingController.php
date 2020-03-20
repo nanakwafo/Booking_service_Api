@@ -27,7 +27,7 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
-
+       
         $booking=$request->isMethod('put')? Booking::findOrFail($request->booking_id):$this->booking;
         //
         $booking->lastname=$request->lastname;

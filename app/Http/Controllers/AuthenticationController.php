@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
-
-class AuthController extends Controller
+class AuthenticationController extends Controller
 {
+
+ //
     public function register (Request $request)
     {
-        $validatedDate = $request->validate ([
-            'name'     => 'required',
-            'email'    => 'required',
-            'password' => 'required'
-        ]);
-        $validatedDate['password']=bcrypt($request->password);
+        $validatedDate= $this->validate($request,[
+             'name'     => 'required',
+             'email'    => 'required',
+             'password' => 'required'
+         ]);
+
+//
+        $validatedDate['password'] = bcrypt ($request->password);
         $user = User::create ($validatedDate);
         $accessToken = $user->createToken ('authToken')->accessToken;
 
@@ -25,15 +28,16 @@ class AuthController extends Controller
 
     public function login (Request $request)
     {
-        $loginData = $request->validate ([
+        $loginData=  $this->validate($request,[
             'email'    => 'required',
             'password' => 'required'
         ]);
-        if ( !auth ()->attempt ($loginData) ) {
+
+        if ( !Auth::attempt ($loginData) ) {
             return response (['message' => 'Invalid Credentials']);
         }
 
-        $accessToken = auth ()->user ()->createToken ('authToken')->accessToken;
+        $accessToken = Auth::user ()->createToken ('authToken')->accessToken;
 
         return response (['user' => auth ()->user (), 'accessToken' => $accessToken]);
     }
