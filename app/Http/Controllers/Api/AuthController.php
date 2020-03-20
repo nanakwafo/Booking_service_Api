@@ -16,6 +16,7 @@ class AuthController extends Controller
             'email'    => 'required',
             'password' => 'required'
         ]);
+        $validatedDate['password']=bcrypt($request->password);
         $user = User::create ($validatedDate);
         $accessToken = $user->createToken ('authToken')->accessToken;
 
