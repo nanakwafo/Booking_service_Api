@@ -3,54 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 use App\Service;
 use Illuminate\Http\Request;
 use App\Http\Resources\Service as ServiceResource;
 
 class ServiceController extends Controller
 {
-    private $service;
-
-    public function __construct ()
+   
+    public function getAllService ()
     {
-        $this->service = new Service();
+        return ServiceResource::collection (Service::all ());
     }
 
-
-    public function index ()
+    public function paginateAllService ()
     {
 
-        $service = Service::simplepaginate (2);
-
-        return ServiceResource::collection ($service);
+        return ServiceResource::collection (Service::simplepaginate (2));
     }
 
     public function store (StoreServiceRequest $request)
     {
         try {
-            $service = Service::create ($request->toArray());
+            $service = Service::create ($request->toArray ());
         } catch (\Exception $exception) {
-            return response ()->json (['exception' => $exception->getMessage()]);
+            return response ()->json (['exception' => $exception->getMessage ()]);
         }
         if ( $service )
             return new ServiceResource($service);
 
     }
 
-    public function update ($id,Request $request)
+    public function update ($id, UpdateServiceRequest $request)
     {
-        try{
-            $service = Service::findorfail($id)->update($request->toArray());
+        try {
+            $service = Service::findorfail ($id)->update ($request->toArray ());
 
-        }catch(\Exception $exception){
-             return response()->json(['exception' => $exception->getMessage()]);
+        } catch (\Exception $exception) {
+            return response ()->json (['exception' => $exception->getMessage ()]);
         }
 
 
-        if($service){
-            return  new ServiceResource(Service::find($service));
+        if ( $service ) {
+            return new ServiceResource(Service::find ($service));
         }
-
 
 
     }
@@ -63,6 +59,6 @@ class ServiceController extends Controller
 
     public function destroy ($id)
     {
-        return new ServiceResource(Service::findOrFail ($id));
+        return new ServiceResource(Service::findOrFail ($id)->delete ());
     }
 }
