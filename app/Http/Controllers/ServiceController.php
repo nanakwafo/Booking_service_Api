@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Service;
-use Illuminate\Http\Request;
 use App\Http\Resources\Service as ServiceResource;
 
 class ServiceController extends Controller
 {
-   
+
     public function getAllService ()
     {
         return ServiceResource::collection (Service::all ());

@@ -52,4 +52,4 @@ Route::post ('service', 'ServiceController@store');
 Route::patch ('service/{id}', 'ServiceController@update');
 
 //Delete Service
-Route::get ('service/{id}', 'ServiceController@destroy');
+Route::delete ('service/{id}', 'ServiceController@destroy');
