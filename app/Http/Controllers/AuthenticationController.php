@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegistrationRequest;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -10,30 +12,20 @@ class AuthenticationController extends Controller
 {
 
  //
-    public function register (Request $request)
+    public function register (RegistrationRequest $request)
     {
-        $validatedDate= $this->validate($request,[
-             'name'     => 'required',
-             'email'    => 'required',
-             'password' => 'required'
-         ]);
-
-//
-        $validatedDate['password'] = bcrypt ($request->password);
-        $user = User::create ($validatedDate);
+        $request['password'] = bcrypt ($request->password);
+        $user = User::create ($request);
         $accessToken = $user->createToken ('authToken')->accessToken;
 
         return response (['user' => $user, 'accessToken' => $accessToken]);
     }
 
-    public function login (Request $request)
+    public function login (LoginRequest $request)
     {
-        $loginData=  $this->validate($request,[
-            'email'    => 'required',
-            'password' => 'required'
-        ]);
+       
 
-        if ( !Auth::attempt ($loginData) ) {
+        if ( !Auth::attempt ($request) ) {
             return response (['message' => 'Invalid Credentials']);
         }
 
