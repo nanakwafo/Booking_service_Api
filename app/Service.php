@@ -13,10 +13,10 @@ class Service extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function bookings()
+    public function booking()
     {
 
-        return $this->hasMany('App\Booking');
+        return $this->belongsTo('App\Booking');
     }
 
 }

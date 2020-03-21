@@ -17,11 +17,4 @@ class Service extends JsonResource
         return parent::toArray ($request);
     }
 
-    public function with ()
-    {
-
-        return [
-            'apiversion' => '1.0'
-        ];
-    }
 }

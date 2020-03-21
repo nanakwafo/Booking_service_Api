@@ -42,14 +42,14 @@ Route::get ('booking/{id}', 'bookingController@destroy');
 //List Services
 Route::get ('services', 'ServiceController@index');
 
-// List Single Booking
+// List Single Service
 Route::get ('service/{id}', 'ServiceController@show');
 
-//create a booking
+//create a Service
 Route::post ('service', 'ServiceController@store');
 
-//Update booking
-Route::patch ('service', 'ServiceController@store');
+//Update Service
+Route::patch ('service/{id}', 'ServiceController@update');
 
-//Delete booking
+//Delete Service
 Route::get ('service/{id}', 'ServiceController@destroy');
