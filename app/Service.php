@@ -8,7 +8,7 @@ class Service extends Model
 {
     //
     
-    protected $fillable=['name'];
+    protected $fillable=['name','price'];
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany

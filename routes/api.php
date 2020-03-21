@@ -40,7 +40,7 @@ Route::get ('booking/{id}', 'bookingController@destroy');
 
 
 //List Services
-Route::get ('services', 'ServiceController@index');
+Route::get ('services', 'ServiceController@getAllService');
 
 // List Single Service
 Route::get ('service/{id}', 'ServiceController@show');
