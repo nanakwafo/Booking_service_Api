@@ -24,6 +24,8 @@ class ServiceTest extends TestCase
             'name'=>'newservice',
             'price'=>'10'
         ]);
+        $response->assertStatus(201);
+        
         $this->assertCount(1,Service::all());
     }
 
