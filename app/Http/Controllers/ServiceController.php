@@ -23,7 +23,7 @@ class ServiceController extends Controller
 
     public function store (StoreServiceRequest $request)
     {
-        
+
         try {
             $service = Service::create ($request->toArray ());
         } catch (\Exception $exception) {
@@ -59,6 +59,8 @@ class ServiceController extends Controller
 
     public function destroy ($id)
     {
-        return new ServiceResource(Service::findOrFail ($id)->delete ());
+        $service=Service::findOrFail ($id);
+        $service->delete();
+        return new ServiceResource($service);
     }
 }

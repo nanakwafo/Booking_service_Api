@@ -16,6 +16,11 @@ class Service extends JsonResource
     {
         return parent::toArray ($request);
     }
-    
+    public function with($request){
+         return[
+             'message'=>'success'
+         ];
+    }
+
 
 }
