@@ -16,5 +16,6 @@ class Service extends JsonResource
     {
         return parent::toArray ($request);
     }
+    
 
 }

@@ -6,7 +6,7 @@ use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Service;
 use App\Http\Resources\Service as ServiceResource;
-
+use Log;
 class ServiceController extends Controller
 {
 
@@ -23,6 +23,7 @@ class ServiceController extends Controller
 
     public function store (StoreServiceRequest $request)
     {
+        
         try {
             $service = Service::create ($request->toArray ());
         } catch (\Exception $exception) {
