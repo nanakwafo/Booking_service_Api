@@ -34,7 +34,7 @@
         "material-design-icons-iconfont": "^5.0.1",
         "sweetalert2": "^9.8.2",
         "vuelidate": "^0.7.5",
-        "vuetify": "^2.2.15",
+        "vuetify": "^2.6.10",
         "vuetify-loader": "^1.4.3"
     }
 }
